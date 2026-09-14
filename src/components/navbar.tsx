@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import ThemeToggle from "@/components/theme-toggle";
 
@@ -18,8 +19,8 @@ export default function Navbar() {
   return (
     <header className="border-b border-black/10 bg-background/95 text-foreground backdrop-blur dark:border-white/10">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4" aria-label="Main navigation">
-        <Link href="/" className="text-lg font-bold tracking-tight" onClick={() => setMenuOpen(false)}>
-          XPLUS SHOP GLOBAL
+        <Link href="/" className="inline-flex items-center rounded-md bg-black px-2 py-1" onClick={() => setMenuOpen(false)} aria-label="XPLUSHOP home">
+          <Image src="/xplushop-logo.png" alt="XPLUSHOP" width={150} height={67} priority className="h-10 w-auto object-contain" />
         </Link>
 
         <div className="hidden items-center gap-6 md:flex">

@@ -1,70 +1,34 @@
 import Link from "next/link";
 import ProductCard from "@/components/product-card";
+import { games } from "@/lib/games";
 import { products } from "@/lib/products";
 
-const categories = [
-  { name: "Style", description: "Everyday pieces, considered carefully.", image: "https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1000&q=85" },
-  { name: "Tech", description: "Smart tools for modern living.", image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1000&q=85" },
-  { name: "Home", description: "Objects that make space feel yours.", image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1000&q=85" },
-  { name: "Travel", description: "Go further, pack lighter.", image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1000&q=85" },
-];
+const featured = products.filter((product) => product.popular).slice(0, 6);
 
 export default function Home() {
   return (
-    <div className="bg-background text-foreground">
-      <section className="relative isolate overflow-hidden border-b border-black/10 dark:border-white/10">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_75%_20%,rgba(129,140,248,0.2),transparent_32%),radial-gradient(circle_at_15%_80%,rgba(244,114,182,0.15),transparent_30%)]" />
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 py-24 sm:py-32 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-36">
-          <div>
-            <p className="mb-6 text-sm font-semibold uppercase tracking-[0.3em] text-foreground/50">Curated globally · shipped simply</p>
-            <h1 className="max-w-3xl text-5xl font-bold tracking-[-0.05em] sm:text-7xl lg:text-8xl">XPLUS SHOP GLOBAL</h1>
-            <p className="mt-8 max-w-xl text-lg leading-8 text-foreground/65">A considered collection of useful, beautiful things for wherever life takes you.</p>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Link href="/shop" className="rounded-full bg-foreground px-7 py-3.5 text-sm font-semibold text-background transition-transform hover:scale-105">Shop Now <span aria-hidden="true">→</span></Link>
-              <a href="#featured" className="rounded-full border border-foreground/20 px-7 py-3.5 text-sm font-semibold transition-colors hover:bg-foreground/5">Explore the edit</a>
-            </div>
+    <div className="noise min-h-full overflow-x-hidden bg-[#08070f] text-[#f5f3ff]">
+      <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden"><div className="absolute -left-48 -top-44 h-[620px] w-[620px] rounded-full bg-violet-700/20 blur-[130px]" /><div className="absolute right-[-210px] top-[24%] h-[560px] w-[560px] rounded-full bg-cyan-600/10 blur-[130px]" /><div className="grid-noise absolute inset-0 opacity-40" /></div>
+      <main className="relative z-10">
+        <section className="mx-auto grid max-w-[1320px] items-center gap-10 px-4 pb-16 pt-14 sm:px-7 sm:pt-20 lg:grid-cols-[1.06fr_.94fr] lg:pb-24 lg:pt-28">
+          <div className="reveal">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-violet-400/25 bg-violet-500/[.1] px-3 py-1.5 text-[11px] font-mono uppercase tracking-[.13em] text-violet-200"><span className="h-1.5 w-1.5 rounded-full bg-cyan-300 shadow-[0_0_12px_#67e8f9]" /> The fast lane for gamers</div>
+            <h1 className="max-w-[760px] text-[clamp(3.5rem,8vw,7rem)] font-black leading-[.88] tracking-[-.075em]">Power up.<br /><span className="bg-gradient-to-r from-violet-300 via-fuchsia-300 to-cyan-300 bg-clip-text text-transparent">Play harder.</span></h1>
+            <p className="mt-7 max-w-[530px] text-[16px] leading-relaxed text-white/55 sm:text-[18px]">Top up instantly with the best rates. From PUBG UC to MLBB Diamonds, every transaction is encrypted, verified, and on its way in 1–5 minutes.</p>
+            <div className="mt-8 flex flex-wrap items-center gap-3"><Link href="/shop" className="button-shine flex h-12 items-center gap-2 rounded-full bg-gradient-to-r from-violet-500 to-cyan-400 px-6 text-[14px] font-extrabold text-[#0b0912] shadow-[0_14px_36px_rgba(139,92,246,.26)] transition hover:-translate-y-0.5">Browse games <span>→</span></Link><a href="#featured" className="flex h-12 items-center gap-2 rounded-full border border-white/15 bg-white/[.045] px-6 text-[14px] font-semibold text-white transition hover:border-violet-300/50 hover:bg-white/[.08]">✨ Featured drops</a></div>
+            <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-[11px] font-mono uppercase tracking-[.11em] text-white/40"><span className="flex items-center gap-2"><span className="text-cyan-300">◷</span> 1–5 min delivery</span><span className="flex items-center gap-2"><span className="text-violet-300">◈</span> ID encrypted</span><span className="flex items-center gap-2"><span className="text-fuchsia-300">◉</span> 24/7 support</span></div>
           </div>
-          <div className="relative mx-auto w-full max-w-lg">
-            <div className="aspect-[4/5] overflow-hidden rounded-[2rem] bg-zinc-200 shadow-2xl shadow-black/10 dark:bg-zinc-800">
-              <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=90" alt="Curated fashion collection" className="h-full w-full object-cover" />
-            </div>
-            <div className="absolute -bottom-5 -left-5 rounded-2xl border border-black/10 bg-background/90 p-4 shadow-xl backdrop-blur dark:border-white/10">
-              <p className="text-xs uppercase tracking-[0.18em] text-foreground/50">New season</p>
-              <p className="mt-1 font-semibold">The everyday edit</p>
-            </div>
-          </div>
-        </div>
-      </section>
+          <div className="reveal reveal-2 relative mx-auto w-full max-w-[530px]"><div className="absolute -inset-6 rounded-[42px] bg-gradient-to-br from-violet-500/20 via-transparent to-cyan-400/10 blur-2xl" /><div className="relative overflow-hidden rounded-[30px] border border-white/[.12] bg-[#111020] p-2 shadow-2xl shadow-violet-950/30"><div className="relative overflow-hidden rounded-[24px] bg-gradient-to-br from-[#262044] via-[#151329] to-[#0b0a14] px-6 pb-7 pt-6 sm:px-8"><div className="absolute right-[-54px] top-[-70px] h-[240px] w-[240px] rounded-full border border-cyan-300/15 shadow-[0_0_100px_rgba(34,211,238,.18)]" /><div className="absolute bottom-[-95px] left-[-75px] h-[220px] w-[220px] rounded-full border border-violet-400/20" /><div className="relative flex items-center justify-between"><span className="font-mono text-[10px] uppercase tracking-[.2em] text-white/45">XPLUSHOP / DROP 001</span><span className="flex items-center gap-1.5 rounded-full border border-cyan-300/20 bg-cyan-300/10 px-2.5 py-1 text-[10px] font-bold text-cyan-200"><span className="h-1.5 w-1.5 rounded-full bg-cyan-300" /> Live</span></div><div className="relative mt-9 flex items-end justify-between gap-5"><div><div className="text-[11px] font-mono uppercase tracking-[.18em] text-violet-200/70">Featured drop</div><h2 className="mt-2 text-4xl font-black tracking-[-.06em] sm:text-5xl">MLBB<br /><span className="text-cyan-300">Diamonds</span></h2><p className="mt-4 max-w-[220px] text-[12px] leading-relaxed text-white/45">Fast delivery. No password. No waiting room.</p></div><div className="float relative flex h-[150px] w-[130px] shrink-0 items-center justify-center sm:h-[180px] sm:w-[150px]"><div className="absolute inset-2 rotate-12 rounded-[38%] border border-cyan-300/20 bg-gradient-to-br from-cyan-300/30 via-violet-500/35 to-fuchsia-500/25 shadow-[0_0_55px_rgba(34,211,238,.22)]" /><span className="relative text-7xl drop-shadow-[0_0_18px_rgba(34,211,238,.7)]">💎</span></div></div><div className="relative mt-8 flex items-end justify-between border-t border-white/[.08] pt-5"><div><div className="text-[10px] font-mono uppercase tracking-[.15em] text-white/35">Starting from</div><div className="mt-1 text-3xl font-black text-cyan-200">$0.30</div></div><Link href="/shop" className="rounded-full border border-white/15 px-4 py-2 text-[11px] font-bold text-white/70 hover:border-cyan-300/60 hover:text-white">View drop →</Link></div></div></div></div>
+        </section>
 
-      <section id="featured" className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
-        <div className="mb-10 flex items-end justify-between gap-6">
-          <div><p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-foreground/50">Handpicked for you</p><h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Featured products</h2></div>
-          <Link href="/shop" className="hidden text-sm font-semibold underline-offset-4 hover:underline sm:block">View all products →</Link>
-        </div>
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {products.slice(0, 8).map((product) => <ProductCard key={product.id} product={product} />)}
-        </div>
-      </section>
+        <section className="border-y border-white/[.07] bg-white/[.02]"><div className="mx-auto grid max-w-[1320px] grid-cols-2 divide-x divide-white/[.08] px-4 py-5 sm:grid-cols-4 sm:px-7"><Stat value="10" label="Games ready" /><Stat value="1–5m" label="Delivery time" /><Stat value="24/7" label="Support online" /><Stat value="$0.30" label="Starting price" /></div></section>
 
-      <section className="border-y border-black/10 bg-foreground/[0.03] dark:border-white/10">
-        <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
-          <div className="mb-10"><p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-foreground/50">Find your next favorite</p><h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Shop by category</h2></div>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {categories.map((category) => <Link href="/shop" key={category.name} className="group relative aspect-[4/5] overflow-hidden rounded-2xl"><img src={category.image} alt={category.name} className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" /><div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" /><div className="absolute inset-x-0 bottom-0 p-5 text-white"><h3 className="text-xl font-semibold">{category.name}</h3><p className="mt-1 text-sm text-white/75">{category.description}</p></div></Link>)}
-          </div>
-        </div>
-      </section>
+        <section id="featured" className="mx-auto max-w-[1320px] px-4 py-20 sm:px-7 lg:py-28"><div className="mb-10 flex items-end justify-between gap-6"><div><p className="mb-3 text-[11px] font-mono uppercase tracking-[.2em] text-violet-300">What’s hot right now</p><h2 className="text-4xl font-black tracking-[-.05em]">Featured drops</h2></div><Link href="/shop" className="hidden text-sm font-bold text-cyan-300 hover:text-cyan-200 sm:block">View all games →</Link></div><div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{featured.map((product) => <ProductCard key={product.id} product={product} />)}</div></section>
 
-      <section className="mx-auto max-w-3xl px-6 py-20 text-center lg:py-28">
-        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-foreground/50">Stay in the loop</p>
-        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Good things, occasionally.</h2>
-        <p className="mx-auto mt-4 max-w-lg text-foreground/65">Get first access to new drops, thoughtful guides, and a little inspiration for your inbox.</p>
-        <form className="mx-auto mt-8 flex max-w-md flex-col gap-3 sm:flex-row" action="#" method="post">
-          <label htmlFor="newsletter-email" className="sr-only">Email address</label>
-          <input id="newsletter-email" name="email" type="email" required placeholder="you@example.com" className="min-w-0 flex-1 rounded-full border border-foreground/20 bg-transparent px-5 py-3 text-sm outline-none placeholder:text-foreground/40 focus:border-foreground" />
-          <button type="submit" className="rounded-full bg-foreground px-6 py-3 text-sm font-semibold text-background transition-opacity hover:opacity-80">Subscribe</button>
-        </form>
-      </section>
+        <section className="mx-auto max-w-[1320px] px-4 pb-20 sm:px-7 lg:pb-28"><div className="mb-8 flex items-end justify-between"><div><p className="mb-3 text-[11px] font-mono uppercase tracking-[.2em] text-cyan-300">Choose your arena</p><h2 className="text-4xl font-black tracking-[-.05em]">Games & top ups</h2></div><Link href="/shop" className="text-sm font-bold text-cyan-300 hover:text-cyan-200">Browse catalog →</Link></div><div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">{games.map((game) => <Link key={game.slug} href={`/shop?game=${game.slug}`} className="group rounded-2xl border border-white/[.09] bg-white/[.035] p-4 transition hover:-translate-y-1 hover:border-violet-400/60 hover:bg-violet-500/[.08]"><span className={`flex h-11 w-11 items-center justify-center rounded-xl ${game.color} text-2xl shadow-lg`}>{game.icon}</span><p className="mt-4 text-sm font-bold text-white/85 group-hover:text-white">{game.name}</p><p className="mt-1 text-[10px] font-mono uppercase tracking-wider text-white/35">Top up now →</p></Link>)}</div></section>
+      </main>
     </div>
   );
 }
+
+function Stat({ value, label }: { value: string; label: string }) { return <div className="px-3 text-center first:pl-0 last:pr-0"><div className="text-xl font-black text-cyan-200 sm:text-2xl">{value}</div><div className="mt-1 text-[10px] font-mono uppercase tracking-[.12em] text-white/35">{label}</div></div>; }

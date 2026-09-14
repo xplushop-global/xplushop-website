@@ -1,14 +1,32 @@
-"use client"
-import { useEffect, useState } from "react"
+"use client";
+
+import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
+
 export default function ThemeToggle() {
-  const [dark, setDark] = useState(false)
-  useEffect(() => {
-    if(dark) document.documentElement.classList.add("dark")
-    else document.documentElement.classList.remove("dark")
-  }, [dark])
+  const { resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) {
+    return (
+      <button type="button" aria-label="Toggle color theme" className="px-3 py-1 border rounded-full text-sm">
+        Theme
+      </button>
+    );
+  }
+
+  const isDark = resolvedTheme === "dark";
+
   return (
-    <button onClick={()=>setDark(!dark)} className="px-3 py-1 border rounded-full text-sm">
-      {dark? "☀️ Light" : "🌙 Dark"}
+    <button
+      type="button"
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+      aria-label={`Switch to ${isDark ? "light" : "dark"} theme`}
+      className="px-3 py-1 border rounded-full text-sm transition-colors hover:bg-black/5 dark:hover:bg-white/10"
+    >
+      {isDark ? "☀️ Light" : "🌙 Dark"}
     </button>
-  )
+  );
 }

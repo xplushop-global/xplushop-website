@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import ThemeToggle from "@/components/theme-toggle";
+import { useCart } from "@/context/cart-context";
 
 const links = [
   { href: "/shop", label: "Shop" },
@@ -14,7 +15,7 @@ const links = [
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
-  const cartCount = 0;
+  const { itemCount: cartCount } = useCart();
 
   return (
     <header className="border-b border-black/10 bg-background/95 text-foreground backdrop-blur dark:border-white/10">

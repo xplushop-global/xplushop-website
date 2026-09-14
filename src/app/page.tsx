@@ -1,16 +1,6 @@
 import Link from "next/link";
 import ProductCard from "@/components/product-card";
-
-const products = [
-  { id: "studio-headphones", name: "Studio Headphones", category: "Audio", price: "$129", image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=900&q=85" },
-  { id: "everyday-sneakers", name: "Everyday Sneakers", category: "Footwear", price: "$98", image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=85" },
-  { id: "minimal-watch", name: "Minimal Watch", category: "Accessories", price: "$175", image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=85" },
-  { id: "carryall-tote", name: "Carryall Tote", category: "Bags", price: "$84", image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=900&q=85" },
-  { id: "linen-overshirt", name: "Linen Overshirt", category: "Apparel", price: "$110", image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=900&q=85" },
-  { id: "ceramic-set", name: "Ceramic Set", category: "Home", price: "$62", image: "https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&w=900&q=85" },
-  { id: "daily-camera", name: "Daily Camera", category: "Tech", price: "$299", image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=900&q=85" },
-  { id: "cloud-lamp", name: "Cloud Lamp", category: "Home", price: "$76", image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=900&q=85" },
-];
+import { products } from "@/lib/products";
 
 const categories = [
   { name: "Style", description: "Everyday pieces, considered carefully.", image: "https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1000&q=85" },
@@ -52,7 +42,7 @@ export default function Home() {
           <Link href="/shop" className="hidden text-sm font-semibold underline-offset-4 hover:underline sm:block">View all products →</Link>
         </div>
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {products.map((product) => <ProductCard key={product.id} {...product} />)}
+          {products.slice(0, 8).map((product) => <ProductCard key={product.id} product={product} />)}
         </div>
       </section>
 
